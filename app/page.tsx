@@ -1,65 +1,115 @@
-import Image from "next/image";
+// FILE: app/page.tsx
+'use client';
+
+import { useState, useEffect } from "react";
+
+// Import Semua Komponen
+import Cover from "./components/Cover";
+import Hero from "./components/Hero"; 
+import Opening from "./components/Opening";
+import Couple from "./components/Couple";
+import Event from "./components/Event";
+import Gift from "./components/Gift";
+import Rsvp from "./components/Rsvp";
+import Gallery from "./components/Gallery";
+import Closing from "./components/Closing";
+import Navbar from "./components/Navbar";
+import MusicPlayer from "./components/MusicPlayer";
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // --- SCRIPT ANIMASI SCROLL OTOMATIS ---
+  useEffect(() => {
+    if (!isOpen) return; // Jangan jalankan kalau cover belum dibuka
+
+    // Observer: Mata-mata yang melihat apakah elemen masuk layar
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        // Jika elemen terlihat di layar (masuk viewport)
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible'); // Tambahkan class biar muncul
+        }
+      });
+    }, { threshold: 0.15 }); // Muncul saat 15% bagian elemen terlihat
+
+    // Targetkan semua elemen yang punya class 'animate-on-scroll'
+    const hiddenElements = document.querySelectorAll('.animate-on-scroll');
+    hiddenElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [isOpen]);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="min-h-screen bg-slate-50 relative overflow-hidden">
+      
+      {/* 1. MUSIC PLAYER (Melayang) */}
+      <MusicPlayer isPlaying={isOpen} />
+
+      {/* 2. COVER DEPAN (Animasi Slide Up saat dibuka) */}
+      <div 
+        className={`fixed inset-0 z-50 transition-transform duration-[1500ms] ease-in-out ${
+          isOpen ? '-translate-y-full' : 'translate-y-0'
+        }`}
+      >
+        <Cover onOpen={() => setIsOpen(true)} />
+      </div>
+
+      {/* 3. KONTEN UTAMA */}
+      <div className="relative z-0">
+         
+         {/* HERO (Paling Atas) */}
+         {/* Tidak perlu animate-on-scroll karena dia muncul pertama kali */}
+         <div id="home">
+            <Hero />
+         </div>
+
+         {/* OPENING (Fade In dari Bawah) */}
+         <div className="animate-on-scroll">
+            <Opening isVisible={isOpen} />
+         </div>
+
+         {/* COUPLE (Fade In dari Bawah) */}
+         <div id="couple" className="animate-on-scroll">
+            <Couple />
+         </div>
+         
+         {/* EVENT (Fade In dari Bawah) */}
+         <div id="event" className="animate-on-scroll">
+            <Event />
+         </div>
+         
+         {/* GALLERY (Fade In dari Bawah) */}
+         <div id="gallery" className="animate-on-scroll">
+            <Gallery />
+         </div>
+
+         {/* GIFT / HADIAH (Fade In dari Bawah) */}
+         <div className="animate-on-scroll">
+             <Gift />
+         </div>
+
+         {/* RSVP / UCAPAN (Fade In dari Bawah) */}
+         <div id="rsvp" className="animate-on-scroll">
+            <Rsvp />
+         </div>
+
+         {/* CLOSING (Fade In dari Bawah) */}
+         <div className="animate-on-scroll">
+             <Closing />
+         </div>
+
+         {/* NAVBAR (Hanya muncul jika sudah dibuka) */}
+         {isOpen && <Navbar />}
+
+         {/* COPYRIGHT FOOTER */}
+         <div className="py-6 text-center bg-white/50 pb-24 animate-on-scroll">
+            <p className="text-slate-400 text-[10px] tracking-widest uppercase">
+                Digital Invitation © 2026 • Created with Love
+            </p>
+         </div>
+      </div>
+
+    </main>
   );
 }
