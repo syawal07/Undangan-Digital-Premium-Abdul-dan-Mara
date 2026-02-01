@@ -59,7 +59,7 @@ export default function Hero() {
   return (
     <section className="relative h-[100dvh] w-full overflow-hidden flex flex-col justify-end pb-24 md:pb-12 bg-gray-900">
       
-      {/* 1. LAYER SLIDESHOW */}
+     {/* 1. LAYER SLIDESHOW */}
       {images.map((src, index) => (
         <div 
             key={src}
@@ -71,10 +71,10 @@ export default function Hero() {
                 src={src} 
                 alt={`Mempelai ${index + 1}`}
                 fill 
-                className="object-cover object-top md:object-center"
+                className="object-cover object-[50%_30%] md:object-center"
                 priority={index === 0}
             />
-            {/* Overlay Gelap Tipis (Supaya foto tidak terlalu silau) */}
+            {/* Overlay Gelap Tipis */}
             <div className="absolute inset-0 bg-black/10" />
         </div>
       ))}
