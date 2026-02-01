@@ -75,8 +75,7 @@ export const dataUndangan = {
       "/mara2.jpg",
       "/mara3.jpg",
       "/mara4.jpg",
-      "/mara5.jpg",
-      "/mara6.jpg"
+      "/mara5.jpg"
     ]
   },
   penutup: {
