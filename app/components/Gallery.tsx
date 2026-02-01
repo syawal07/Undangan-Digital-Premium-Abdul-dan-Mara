@@ -23,19 +23,7 @@ export default function Gallery() {
            </h2>
         </div>
 
-        {/* 1. VIDEO YOUTUBE */}
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-           <iframe 
-             width="100%" 
-             height="100%" 
-             src={`https://www.youtube.com/embed/${dataUndangan.galeri.youtubeID}?rel=0&controls=1`} 
-             title="YouTube video player" 
-             frameBorder="0" 
-             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-             allowFullScreen
-             className="absolute inset-0"
-           />
-        </div>
+       
 
         {/* 2. PHOTO GRID (MASONRY STYLE) */}
         {/* columns-2 md:columns-3 membuat layout seperti Pinterest */}

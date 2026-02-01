@@ -4,7 +4,7 @@ export const dataUndangan = {
   mempelai: {
     pria: {
       namaLengkap: "Abdul Rahmat",
-      namaPanggilan: "Abdul",
+      namaPanggilan: "Rahmat",
       asal: "Jayapura",
       instagram: "@___abdul___rahmat____",
       orangTua: {
@@ -36,7 +36,7 @@ export const dataUndangan = {
     },
     
     // Alamat Teks
-    lokasi: "Kediaman Mempelai Wanita (Rumah Cantik & Travel RABBANI), Jl. Kali Acai, Yobe, Kec. Abepura, Kota Jayapura",
+    lokasi: "Kediaman Mempelai Wanita (Rumah Cantik & Travel RABBANI), Jl. Baru kali Acai Tembus Melati, Abepura Kota Jayapura (Sebelum Pabrik Tahu Ojolali)", 
     
     // LINK MAPS: Saya buatkan link pencarian spesifik ke titik RABBANI
     linkPeta: "https://www.google.com/maps/search/?api=1&query=Rumah+Cantik+%26+Travel+RABBANI+Jl.+Kali+Acai+Abepura",
@@ -52,7 +52,7 @@ export const dataUndangan = {
     rekening: [
       {
         namaBank: "BRI",
-        nomorRekening: "7624-01-002900-50-2",
+        nomorRekening: "762401002900502",
         atasNama: "MAR’ATUSSHOLEHAH",
       },
       {
@@ -69,8 +69,7 @@ export const dataUndangan = {
   },
   // --- BAGIAN BARU: GALERI ---
   galeri: {
-    judul: "Momen Bahagia",
-    youtubeID: "f0F6jMTPlY4", 
+    judul: "Momen Bahagia", 
     foto: [
       "/mara1.jpg",
       "/mara2.jpg",
@@ -87,6 +86,6 @@ export const dataUndangan = {
   },
   audio: {
     // ID YouTube dari link: https://youtu.be/D5Da9wz5ju0
-    youtubeID: "D5Da9wz5ju0", 
+    youtubeID: "erN9iSWapGg",
   }
 };
