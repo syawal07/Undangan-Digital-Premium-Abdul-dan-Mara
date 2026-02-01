@@ -5,7 +5,7 @@ export const dataUndangan = {
     pria: {
       namaLengkap: "Abdul Rahmat",
       namaPanggilan: "Abdul",
-      asal: "Jakarta",
+      asal: "Jayapura",
       instagram: "@___abdul___rahmat____",
       orangTua: {
         ayah: "Bapak Mappa",
