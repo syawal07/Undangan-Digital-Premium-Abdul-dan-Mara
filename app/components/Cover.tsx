@@ -6,7 +6,8 @@ import { dataUndangan } from "../data/content";
 
 export default function Cover({ onOpen }: { onOpen: () => void }) {
   const searchParams = useSearchParams();
-  const guestName = searchParams.get('to') || "Tamu Undangan";
+  const rawName = searchParams.get('kpd'); 
+  const guestName = rawName ? decodeURIComponent(rawName) : "Tamu Undangan";
 
   return (
     // CONTAINER UTAMA
